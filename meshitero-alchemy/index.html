@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3771782298256692" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>深夜の飯テロ錬金術</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <main class="stage">
+    <header class="hero">
+      <h1 class="brand">深夜の飯テロ錬金術</h1>
+      <p class="tagline">食材を3つ選んで、実在しないジャンクフードを錬成せよ。</p>
+    </header>
+
+    <section class="ingredients" aria-label="食材選択">
+      <h2 class="section-title">食材チップ <span class="hint" id="selectHint">0 / 3</span></h2>
+      <div class="chip-grid" id="chipGrid" role="group" aria-label="食材（最大3つ）"></div>
+    </section>
+
+    <section class="cauldron-section" aria-label="錬成鍋">
+      <div class="cauldron-wrap">
+        <div class="cauldron" id="cauldron" aria-hidden="true">
+          <div class="cauldron-rim"></div>
+          <div class="cauldron-body">
+            <div class="bubbles">
+              <span class="bubble b1"></span>
+              <span class="bubble b2"></span>
+              <span class="bubble b3"></span>
+              <span class="bubble b4"></span>
+              <span class="bubble b5"></span>
+            </div>
+            <div class="stew" id="stewEmojis"></div>
+          </div>
+          <div class="cauldron-legs">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="steam">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="alchemy-btn" id="alchemyBtn" disabled>錬成</button>
+      <button type="button" class="reset-btn" id="resetBtn" hidden>選び直す</button>
+    </section>
+
+    <section class="result" id="result" hidden aria-live="polite">
+      <div class="concept-art" id="conceptArt" aria-label="概念イラスト"></div>
+      <h2 class="dish-name" id="dishName"></h2>
+      <p class="calories" id="calories"></p>
+      <p class="sizzle" id="sizzle"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a href="../">← ごましおアプリセンターに戻る</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

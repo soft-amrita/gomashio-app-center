@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3771782298256692" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>絶対押すなよボタン</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <main class="stage" id="stage">
+    <p class="counter" id="counter" aria-live="polite">押した回数: 0</p>
+    <p class="speech" id="speech" aria-live="assertive">……押すなよ？</p>
+    <div class="arena" id="arena">
+      <div class="btn-wrap" id="btnWrap">
+        <button type="button" class="push-btn" id="mainBtn" aria-label="絶対押すなよ">
+          絶対押すなよ
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <div class="cert-overlay" id="certOverlay" hidden>
+    <div class="cert-card" role="dialog" aria-labelledby="certTitle" aria-modal="true">
+      <p class="cert-eyebrow">CERTIFICATE</p>
+      <h2 id="certTitle">ルール違反マスター認定証</h2>
+      <p class="cert-body">
+        あなたは「絶対押すなよ」を40回押し切り、<br>
+        世界で最も言うことを聞かない人間として認定されました。
+      </p>
+      <p class="cert-stamp" aria-hidden="true">違反</p>
+      <button type="button" class="reset-btn" id="resetBtn">最初から</button>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <a href="../">← ごましおアプリセンターに戻る</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

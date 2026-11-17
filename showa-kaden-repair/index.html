@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3771782298256692" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>昭和家電たたき修理センター</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <p class="shop-sign">昭和家電たたき修理センター</p>
+      <p class="tagline">ブラウン管を叩いて直す · 物理パズル</p>
+    </header>
+
+    <main class="main">
+      <section class="meter-panel" aria-label="映り具合">
+        <div class="meter-label-row">
+          <span>映り具合</span>
+          <span id="clarity-value">0</span>
+        </div>
+        <div class="meter-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="clarity-bar">
+          <div class="meter-fill" id="clarity-fill"></div>
+        </div>
+        <p class="hint" id="hint">右上あたりを、ほどよい強さで叩いてみよう</p>
+      </section>
+
+      <section class="tv-stage">
+        <div class="tv-cabinet" id="tv-cabinet">
+          <div class="tv-bezel">
+            <canvas id="screen" width="480" height="360" aria-label="テレビ画面。タップやスワイプで叩く"></canvas>
+            <div class="scanlines" aria-hidden="true"></div>
+            <div class="glass-glare" aria-hidden="true"></div>
+          </div>
+          <div class="tv-controls" aria-hidden="true">
+            <span class="knob"></span>
+            <span class="knob"></span>
+            <span class="speaker"></span>
+          </div>
+          <div class="tv-brand">SHŌWA · CRT-88</div>
+        </div>
+        <p class="gesture-tip">クリック／タップ、またはスワイプの速さで強さが変わります</p>
+      </section>
+
+      <section class="clear-overlay" id="clear-overlay" hidden>
+        <div class="clear-card">
+          <p class="clear-eyebrow">修理完了</p>
+          <h2 class="clear-title" id="clear-title">映像が戻った！</h2>
+          <p class="clear-sub" id="clear-sub">もう一度叩いて再挑戦できます</p>
+          <button type="button" class="retry-btn" id="retry-btn">もう一度修理する</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a href="../">← ごましおアプリセンターに戻る</a>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

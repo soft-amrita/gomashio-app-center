@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3771782298256692" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>限界言い訳ルーレット</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="flash" id="flash" aria-hidden="true"></div>
+
+  <main class="stage">
+    <header class="hero">
+      <h1 class="brand">限界言い訳ルーレット</h1>
+      <p class="tagline">遅刻・ドタキャンの言い訳を、スロットで捏造する。</p>
+    </header>
+
+    <section class="machine" aria-label="言い訳スロット">
+      <div class="reels" id="reels">
+        <div class="reel-col">
+          <p class="reel-label">誰が</p>
+          <div class="reel-window" data-reel="0">
+            <div class="reel-strip" id="strip0"></div>
+          </div>
+          <button type="button" class="stop-btn" id="stop0" disabled>ストップ</button>
+        </div>
+        <div class="reel-col">
+          <p class="reel-label">何をして</p>
+          <div class="reel-window" data-reel="1">
+            <div class="reel-strip" id="strip1"></div>
+          </div>
+          <button type="button" class="stop-btn" id="stop1" disabled>ストップ</button>
+        </div>
+        <div class="reel-col">
+          <p class="reel-label">どうなった</p>
+          <div class="reel-window" data-reel="2">
+            <div class="reel-strip" id="strip2"></div>
+          </div>
+          <button type="button" class="stop-btn" id="stop2" disabled>ストップ</button>
+        </div>
+      </div>
+
+      <button type="button" class="start-btn" id="startBtn">スタート</button>
+    </section>
+
+    <section class="result" id="result" hidden>
+      <p class="result-eyebrow" id="resultEyebrow">捏造完了</p>
+      <p class="excuse" id="excuse" aria-live="polite"></p>
+      <p class="sincerity" id="sincerity" aria-live="polite"></p>
+
+      <div class="apology-block">
+        <p class="apology-label">謝罪文テンプレート</p>
+        <p class="apology" id="apology"></p>
+        <button type="button" class="copy-btn" id="copyBtn">コピー</button>
+        <p class="copy-feedback" id="copyFeedback" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <div class="jackpot" id="jackpot" hidden>
+      <p class="jackpot-badge">確定演出</p>
+      <p class="jackpot-title">絶対に許される最強の言い訳</p>
+      <p class="jackpot-excuse" id="jackpotExcuse"></p>
+      <p class="sincerity jackpot-stars">誠意レベル ★★★★★</p>
+      <div class="apology-block">
+        <p class="apology-label">謝罪文テンプレート</p>
+        <p class="apology" id="jackpotApology"></p>
+        <button type="button" class="copy-btn" id="jackpotCopyBtn">コピー</button>
+        <p class="copy-feedback" id="jackpotCopyFeedback" aria-live="polite"></p>
+      </div>
+      <button type="button" class="again-btn" id="againBtn">もう一度回す</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <a href="../">← ごましおアプリセンターに戻る</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -3,49 +3,248 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ごましおアプリセンター</title>
+<title>ごましおアプリセンター｜ごましお発の小さなウェブアプリ集</title>
+<meta name="description" content="ごましお発の小さなウェブアプリをまとめた場所。ゲーム、診断、暇つぶし——どれもブラウザだけで動きます。">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3771782298256692" crossorigin="anonymous"></script>
 <style>
+  :root {
+    --bg: #17140f;
+    --bg2: #221e16;
+    --card: #fffdf6;
+    --ink: #2b2620;
+    --sub: #7a7263;
+    --accent: #e4572e;
+    --accent2: #f2a03d;
+    --line: #e7dfcd;
+    --chip: #2e2a20;
+    --radius: 18px;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", sans-serif;
-    background: #f6f3ec;
-    color: #2b2620;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(255,255,255,.05) 0 2px, transparent 3px),
+      radial-gradient(circle at 82% 8%, rgba(255,255,255,.04) 0 2px, transparent 3px),
+      radial-gradient(circle at 65% 90%, rgba(255,255,255,.05) 0 2px, transparent 3px),
+      radial-gradient(circle at 30% 75%, rgba(255,255,255,.03) 0 2px, transparent 3px),
+      linear-gradient(160deg, var(--bg) 0%, var(--bg2) 100%);
+    background-size: 340px 340px, 420px 420px, 380px 380px, 300px 300px, cover;
+    color: #f3eee2;
     min-height: 100vh;
-    padding: 48px 20px 64px;
   }
-  main { max-width: 680px; margin: 0 auto; }
-  h1 { font-size: 1.7rem; letter-spacing: 0.04em; margin-bottom: 8px; }
-  .lead { color: #6b6257; margin-bottom: 36px; font-size: 0.95rem; }
-  .apps { display: grid; gap: 16px; }
-  a.card {
-    display: block;
-    background: #fffdf8;
-    border: 1px solid #e2dacb;
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px 72px; }
+
+  header { text-align: center; padding: 64px 0 10px; }
+  .logo { font-size: 3.2rem; line-height: 1; }
+  h1 { font-size: clamp(1.9rem, 5vw, 2.7rem); letter-spacing: .05em; margin: 14px 0 10px; }
+  h1 .goma { color: var(--accent2); }
+  .lead { color: #c9c0ab; font-size: .98rem; line-height: 1.8; }
+  .stats { margin-top: 16px; font-size: .85rem; color: #9d947e; }
+  .stats b { color: #f3eee2; font-size: 1.05rem; }
+
+  .nemo {
+    display: none;
+    margin: 26px auto 0;
+    max-width: 560px;
+    background: rgba(255,253,246,.06);
+    border: 1px solid rgba(255,253,246,.14);
     border-radius: 14px;
-    padding: 22px 24px;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    padding: 12px 18px;
+    font-size: .88rem;
+    color: #d8d0ba;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
-  a.card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(80, 66, 40, 0.12); }
-  .card h2 { font-size: 1.2rem; margin-bottom: 6px; }
-  .card p { color: #6b6257; font-size: 0.92rem; line-height: 1.6; }
-  .card .go { display: inline-block; margin-top: 10px; font-size: 0.85rem; color: #b3541e; }
-  footer { margin-top: 48px; color: #9a917f; font-size: 0.8rem; text-align: center; }
+  .nemo .ttl { font-weight: 700; color: #f3eee2; }
+  .nemo .src { width: 100%; font-size: .7rem; color: #8b8271; }
+
+  .controls { margin: 38px 0 8px; display: flex; flex-direction: column; gap: 16px; align-items: center; }
+  .searchbox { width: 100%; max-width: 480px; position: relative; }
+  .searchbox input {
+    width: 100%; padding: 13px 18px 13px 44px; border-radius: 999px;
+    border: 1px solid rgba(255,253,246,.18); background: rgba(255,253,246,.07);
+    color: #f3eee2; font-size: .95rem; outline: none;
+  }
+  .searchbox input::placeholder { color: #8b8271; }
+  .searchbox input:focus { border-color: var(--accent2); }
+  .searchbox .mag { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); opacity: .7; }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .chip {
+    padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,253,246,.16);
+    background: var(--chip); color: #d8d0ba; font-size: .85rem; cursor: pointer;
+    transition: all .15s ease;
+  }
+  .chip:hover { border-color: var(--accent2); }
+  .chip.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+  .shuffle {
+    padding: 10px 22px; border-radius: 999px; border: none; cursor: pointer;
+    background: linear-gradient(120deg, var(--accent), var(--accent2));
+    color: #fff; font-weight: 700; font-size: .9rem; letter-spacing: .03em;
+    box-shadow: 0 6px 18px rgba(228,87,46,.35); transition: transform .15s ease;
+  }
+  .shuffle:hover { transform: translateY(-2px) rotate(-1deg); }
+
+  .grid {
+    display: grid; gap: 18px; margin-top: 26px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  a.card {
+    display: flex; gap: 16px; align-items: flex-start;
+    background: var(--card); color: var(--ink); text-decoration: none;
+    border-radius: var(--radius); padding: 22px;
+    transition: transform .16s ease, box-shadow .16s ease;
+    position: relative; overflow: hidden;
+  }
+  a.card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,.45); }
+  a.card.hide { display: none; }
+  .icon {
+    font-size: 2.3rem; line-height: 1.1; flex-shrink: 0;
+    width: 64px; height: 64px; display: grid; place-items: center;
+    background: #f6efdd; border: 1px solid var(--line); border-radius: 14px;
+  }
+  .card h2 { font-size: 1.08rem; margin-bottom: 6px; letter-spacing: .02em; }
+  .card p { color: var(--sub); font-size: .87rem; line-height: 1.65; }
+  .meta { margin-top: 10px; display: flex; gap: 8px; align-items: center; }
+  .tag { font-size: .7rem; padding: 3px 9px; border-radius: 999px; background: #f0e9d8; color: #8a6d1f; font-weight: 700; }
+  .new { font-size: .7rem; padding: 3px 9px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 700; }
+  .go { margin-left: auto; font-size: .82rem; color: var(--accent); font-weight: 700; white-space: nowrap; }
+  .empty { display: none; text-align: center; color: #9d947e; padding: 40px 0; font-size: .95rem; }
+
+  footer { margin-top: 64px; text-align: center; color: #8b8271; font-size: .8rem; line-height: 2; }
+  footer a { color: #d8d0ba; }
 </style>
 </head>
 <body>
-<main>
-  <h1>ごましおアプリセンター</h1>
-  <p class="lead">ごましお発の小さなウェブアプリをまとめた場所です。どれもブラウザだけで動きます。</p>
-  <div class="apps">
-    <a class="card" href="jinsei-seibun/">
-      <h2>人生の成分表示ジェネレーター</h2>
-      <p>5つの質問に答えると、食品パッケージ裏面の成分表示シール風に、あなたの「取扱説明書ラベル」が生成されます。画像保存とXシェア対応。</p>
-      <span class="go">あそぶ →</span>
-    </a>
+<div class="wrap">
+  <header>
+    <div class="logo">🧂</div>
+    <h1>ごましお<span class="goma">アプリ</span>センター</h1>
+    <p class="lead">ごましお発の小さなウェブアプリをまとめた場所です。<br>ゲーム、診断、暇つぶし——どれもブラウザだけで動きます。</p>
+    <p class="stats">公開中アプリ <b id="appCount">11</b> 本</p>
+    <div class="nemo" id="nemo">
+      <span class="ttl">🌊 ポイント・ネモの天気</span>
+      <span id="nemoBody">取得中…</span>
+      <span class="src">ごましお放送局の天気予報はこの地点のみ。データ: wttr.in</span>
+    </div>
+  </header>
+
+  <div class="controls">
+    <div class="searchbox">
+      <span class="mag">🔍</span>
+      <input type="search" id="q" placeholder="アプリを検索（例：言い訳、タイピング、診断）" aria-label="アプリを検索">
+    </div>
+    <div class="chips" id="chips"></div>
+    <button class="shuffle" id="shuffle">🎲 おまかせで1本開く</button>
   </div>
-  <footer>作り手: ごま（Muse）＋ Cursor ／ 企画相談: Gemini</footer>
-</main>
+
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty">見つかりませんでした。別の言葉で探してみてください。</p>
+
+  <footer>
+    作り手: ごま（Muse）＋ Cursor ／ 企画相談: Gemini<br>
+    YouTube「ごましお放送局」: <a href="https://www.youtube.com/@gomashio_news" target="_blank" rel="noopener">@gomashio_news</a>
+  </footer>
+</div>
+
+<script>
+  const APPS = [
+    { slug: "jinsei-seibun", icon: "🏷️", name: "人生の成分表示ジェネレーター", cat: "診断・生成",
+      desc: "5つの質問に答えると、食品の成分表示シール風にあなたの「取扱説明書ラベル」が生成されます。画像保存とXシェア対応。", kw: "診断 成分表示 ラベル 人生 質問" },
+    { slug: "zettai-osunayo", icon: "🔴", name: "絶対押すなよボタン", cat: "ゲーム", isNew: true,
+      desc: "押すたびに文句を言ったり逃げたりするボタンの、40段階メタコメディ。押すなと言われると押したくなる。", kw: "ボタン 押すな メタ ネタ 逃げる" },
+    { slug: "toku-passbook", icon: "📒", name: "徳ポイント通帳", cat: "記録", isNew: true,
+      desc: "日常の善行・悪行をレトロな銀行通帳風に記帳。残高しだいで来世の転生先ランクが決まります。", kw: "徳 ポイント 通帳 善行 来世 転生 記録" },
+    { slug: "iiwake-roulette", icon: "🎰", name: "限界言い訳ルーレット", cat: "診断・生成", isNew: true,
+      desc: "遅刻・ドタキャンの言い訳をスロットで捏造。誠意レベル判定と謝罪文の自動生成つき。", kw: "言い訳 ルーレット スロット 遅刻 謝罪 生成" },
+    { slug: "kusodeka-kanjou", icon: "💥", name: "クソデカ感情変換器", cat: "診断・生成", isNew: true,
+      desc: "一言テキストを特撮サブタイ風の極太明朝レイアウト画像に変換。PNGで保存できます。", kw: "画像 変換 特撮 サブタイトル 明朝 生成" },
+    { slug: "kyomu-puchipuchi", icon: "🫧", name: "虚無プチプチ無限工場", cat: "暇つぶし", isNew: true,
+      desc: "無限に潰せるプチプチ。レア気泡と称号集めに虚無を捧げる、快感特化の暇つぶし。", kw: "プチプチ 暇つぶし 無限 気泡 ストレス" },
+    { slug: "nounai-kaigi", icon: "🧠", name: "脳内会議議事録メーカー", cat: "診断・生成", isNew: true,
+      desc: "迷いごとを入れると脳内の5人格が討論して採決。「脳内閣議決定書」の画像も作れます。", kw: "脳内 会議 議事録 討論 決断 生成" },
+    { slug: "meshitero-alchemy", icon: "🍲", name: "深夜の飯テロ錬金術", cat: "診断・生成", isNew: true,
+      desc: "食材を3つ選んで、実在しない深夜ジャンクフードを錬成。推定カロリーと背徳感つき。", kw: "飯テロ 深夜 錬金術 料理 カロリー 生成" },
+    { slug: "shazai-kaiken", icon: "🙇", name: "謝罪会見シミュレーター", cat: "ゲーム", isNew: true,
+      desc: "お辞儀の角度が命運を分ける記者会見ゲーム。フラッシュの雨の中、42〜48度で止めろ。", kw: "謝罪 会見 お辞儀 ゲーム 炎上 シミュレーター" },
+    { slug: "shachiku-exorcism", icon: "👻", name: "社畜タイピング・エクソシズム", cat: "ゲーム", isNew: true,
+      desc: "湧き出るビジネス用語の悪霊を連打で除霊する30秒ゲーム。本日のストレス浄化率は？", kw: "タイピング ゲーム 社畜 除霊 ビジネス用語 30秒" },
+    { slug: "showa-kaden-repair", icon: "📺", name: "昭和家電たたき修理センター", cat: "ゲーム", isNew: true,
+      desc: "砂嵐のブラウン管テレビを叩いて直す。叩く場所と力加減がコツの、物理パズル風ゲーム。", kw: "昭和 テレビ たたき 修理 レトロ ゲーム ブラウン管" },
+  ];
+
+  const grid = document.getElementById("grid");
+  const empty = document.getElementById("empty");
+  document.getElementById("appCount").textContent = APPS.length;
+
+  for (const app of APPS) {
+    const a = document.createElement("a");
+    a.className = "card";
+    a.href = app.slug + "/";
+    a.dataset.cat = app.cat;
+    a.dataset.search = (app.name + " " + app.desc + " " + app.kw).toLowerCase();
+    a.innerHTML =
+      '<div class="icon">' + app.icon + "</div>" +
+      "<div><h2></h2><p></p>" +
+      '<div class="meta"><span class="tag"></span>' +
+      (app.isNew ? '<span class="new">NEW</span>' : "") +
+      '<span class="go">あそぶ →</span></div></div>';
+    a.querySelector("h2").textContent = app.name;
+    a.querySelector("p").textContent = app.desc;
+    a.querySelector(".tag").textContent = app.cat;
+    grid.appendChild(a);
+  }
+
+  const cats = ["すべて", ...new Set(APPS.map(a => a.cat))];
+  const chips = document.getElementById("chips");
+  let curCat = "すべて";
+  for (const c of cats) {
+    const b = document.createElement("button");
+    b.className = "chip" + (c === "すべて" ? " on" : "");
+    b.textContent = c;
+    b.addEventListener("click", () => {
+      curCat = c;
+      chips.querySelectorAll(".chip").forEach(x => x.classList.toggle("on", x.textContent === c));
+      applyFilter();
+    });
+    chips.appendChild(b);
+  }
+
+  const q = document.getElementById("q");
+  q.addEventListener("input", applyFilter);
+  function applyFilter() {
+    const word = q.value.trim().toLowerCase();
+    let shown = 0;
+    grid.querySelectorAll(".card").forEach(card => {
+      const okCat = curCat === "すべて" || card.dataset.cat === curCat;
+      const okWord = !word || card.dataset.search.includes(word);
+      const show = okCat && okWord;
+      card.classList.toggle("hide", !show);
+      if (show) shown++;
+    });
+    empty.style.display = shown ? "none" : "block";
+  }
+
+  document.getElementById("shuffle").addEventListener("click", () => {
+    const app = APPS[Math.floor(Math.random() * APPS.length)];
+    location.href = app.slug + "/";
+  });
+
+  // ポイント・ネモの天気（無料API: wttr.in）。失敗したら静かに隠す。
+  fetch("https://wttr.in/-47.39,-123.63?format=j1")
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(j => {
+      const c = j.current_condition && j.current_condition[0];
+      if (!c) return;
+      const descMap = { "Clear": "快晴", "Sunny": "晴れ", "Partly cloudy": "晴れ時々曇り", "Cloudy": "曇り", "Overcast": "曇り", "Light rain": "小雨", "Moderate rain": "雨", "Heavy rain": "大雨", "Patchy rain possible": "雨の可能性あり", "Mist": "霧", "Fog": "濃霧" };
+      const desc = descMap[c.weatherDesc[0].value] || c.weatherDesc[0].value;
+      document.getElementById("nemoBody").textContent =
+        desc + " ／ 気温 " + c.temp_C + "℃ ／ 風速 " + Math.round(c.windspeedKmph / 3.6) + " m/s ／ 湿度 " + c.humidity + "%";
+      document.getElementById("nemo").style.display = "flex";
+    })
+    .catch(() => {});
+</script>
 </body>
 </html>

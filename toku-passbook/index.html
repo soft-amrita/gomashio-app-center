@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3771782298256692" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="日常の善行・悪行をレトロな銀行通帳風に記帳し、来世ランクを表示する徳ポイント通帳。">
+  <title>徳ポイント通帳</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <p class="bank-mark">徳の銀行</p>
+      <h1 class="app-title">徳ポイント通帳</h1>
+      <p class="tagline">善行と悪行を記帳し、来世の転生先を占う</p>
+    </header>
+
+    <section class="rank-panel" aria-live="polite">
+      <div class="rank-label">来世の転生先ランク</div>
+      <div class="rank-row">
+        <p class="rank-name" id="rankName">一般人</p>
+        <p class="rank-desc" id="rankDesc">まあまあ普通。来世も今くらいの人生が待っている。</p>
+      </div>
+      <div class="balance-box">
+        <span class="balance-label">徳残高</span>
+        <span class="balance-value" id="balanceValue">0</span>
+        <span class="balance-unit">徳</span>
+      </div>
+    </section>
+
+    <section class="passbook" aria-label="通帳明細">
+      <div class="passbook-cover">
+        <span class="cover-seal">徳</span>
+        <div class="cover-meta">
+          <p class="cover-bank">徳の銀行 本店</p>
+          <p class="cover-book">普通預金通帳（徳建て）</p>
+          <p class="cover-account">口座番号 7777-徳-0001</p>
+        </div>
+      </div>
+
+      <div class="ledger-wrap">
+        <table class="ledger" id="ledger">
+          <thead>
+            <tr>
+              <th class="col-date">日付</th>
+              <th class="col-memo">摘要</th>
+              <th class="col-delta">増減</th>
+              <th class="col-balance">残高</th>
+            </tr>
+          </thead>
+          <tbody id="ledgerBody">
+            <tr class="empty-row" id="emptyRow">
+              <td colspan="4">まだ記帳がありません。善行か悪行をどうぞ。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="presets" aria-label="プリセット記帳">
+      <h2 class="section-title">かんたん記帳</h2>
+      <div class="preset-grid" id="presetGrid"></div>
+    </section>
+
+    <section class="custom" aria-label="カスタム記帳">
+      <h2 class="section-title">カスタム記帳</h2>
+      <form class="custom-form" id="customForm">
+        <label class="field">
+          <span class="field-label">摘要</span>
+          <input type="text" id="customMemo" maxlength="40" placeholder="例：朝の挨拶を完璧に決めた" required autocomplete="off">
+        </label>
+        <label class="field field-amount">
+          <span class="field-label">増減（正で善行・負で悪行）</span>
+          <input type="number" id="customAmount" step="1" placeholder="例：50 または -30" required>
+        </label>
+        <button type="submit" class="btn btn-primary">記帳する</button>
+      </form>
+    </section>
+
+    <section class="danger">
+      <button type="button" class="btn btn-danger" id="clearBtn">通帳を全消去</button>
+    </section>
+
+    <footer class="site-footer">
+      <a href="../">← ごましおアプリセンターに戻る</a>
+      <p class="privacy">データはブラウザ内にのみ保存され、外部送信しません。</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

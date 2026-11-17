@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3771782298256692" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>謝罪会見シミュレーター</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="flash" id="flash" aria-hidden="true"></div>
+
+  <main class="app">
+    <!-- 入力画面 -->
+    <section class="screen" id="screen-setup" aria-labelledby="setup-title">
+      <header class="brand-block">
+        <p class="brand-live">LIVE</p>
+        <h1 class="brand" id="setup-title">謝罪会見シミュレーター</h1>
+        <p class="tagline">日常のミスを、記者会見風に謝罪する。</p>
+      </header>
+
+      <form class="setup-form" id="setup-form">
+        <label class="field">
+          <span class="field-label">やらかしたこと</span>
+          <input
+            type="text"
+            id="incident"
+            name="incident"
+            maxlength="40"
+            required
+            placeholder="例：プリンを勝手に食べた"
+            autocomplete="off"
+          >
+        </label>
+        <label class="field">
+          <span class="field-label">名前 <span class="optional">任意</span></span>
+          <input
+            type="text"
+            id="person-name"
+            name="personName"
+            maxlength="16"
+            placeholder="例：ごま"
+            autocomplete="off"
+          >
+        </label>
+        <button type="submit" class="btn btn-primary">会見を始める</button>
+      </form>
+    </section>
+
+    <!-- 会見画面 -->
+    <section class="screen screen-hidden" id="screen-kaiken" aria-labelledby="kaiken-title" hidden>
+      <div class="studio">
+        <div class="studio-top">
+          <span class="ch-badge">GMS NEWS</span>
+          <span class="live-pill" id="kaiken-title">緊急会見</span>
+          <span class="clock" id="clock" aria-hidden="true"></span>
+        </div>
+
+        <div class="podium" aria-hidden="true">
+          <div class="person" id="person">
+            <div class="person-head"></div>
+            <div class="person-body" id="person-body">
+              <div class="person-torso"></div>
+              <div class="person-arms"></div>
+            </div>
+          </div>
+          <div class="mic-cluster">
+            <span class="mic"></span>
+            <span class="mic"></span>
+            <span class="mic"></span>
+          </div>
+        </div>
+
+        <div class="telop" role="status" aria-live="polite">
+          <div class="telop-bar">
+            <span class="telop-breaking">速報</span>
+            <p class="telop-text" id="telop-text"></p>
+          </div>
+          <p class="telop-sub" id="telop-sub"></p>
+        </div>
+
+        <div class="reporter" id="reporter-box" aria-live="polite">
+          <p class="reporter-label">記者</p>
+          <p class="reporter-q" id="reporter-q"></p>
+        </div>
+
+        <div class="bow-panel" id="bow-panel">
+          <p class="bow-instruction" id="bow-instruction">
+            長押ししてお辞儀。45度付近で離す
+          </p>
+          <p class="bow-round" id="bow-round">お辞儀 1 / 3</p>
+
+          <div class="gauge-wrap" aria-hidden="true">
+            <div class="gauge-track">
+              <div class="gauge-sweet" title="許容範囲 42〜48度"></div>
+              <div class="gauge-fill" id="gauge-fill"></div>
+              <div class="gauge-needle" id="gauge-needle"></div>
+            </div>
+            <div class="gauge-labels">
+              <span>0°</span>
+              <span>45°</span>
+              <span>90°</span>
+            </div>
+          </div>
+
+          <p class="angle-readout" id="angle-readout" aria-live="off">0°</p>
+
+          <button
+            type="button"
+            class="btn btn-bow"
+            id="bow-btn"
+            aria-describedby="bow-instruction"
+          >
+            押し続けてお辞儀
+          </button>
+          <p class="bow-hint">タップ長押し / マウス長押し / スペースキー</p>
+        </div>
+
+        <div class="eval-panel screen-hidden" id="eval-panel" hidden>
+          <p class="eval-angle" id="eval-angle"></p>
+          <p class="eval-comment" id="eval-comment"></p>
+          <button type="button" class="btn btn-primary" id="eval-next">次へ</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 結果画面 -->
+    <section class="screen screen-hidden" id="screen-result" aria-labelledby="result-title" hidden>
+      <div class="breaking-board" role="status" aria-live="assertive">
+        <p class="breaking-eyebrow">速報</p>
+        <h2 class="breaking-title" id="result-title">世間の納得度</h2>
+        <p class="breaking-rank" id="result-rank"></p>
+        <p class="breaking-score" id="result-score"></p>
+        <p class="breaking-blurb" id="result-blurb"></p>
+        <ul class="bow-history" id="bow-history"></ul>
+        <button type="button" class="btn btn-primary" id="retry-btn">もう一度会見する</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a href="../">← ごましおアプリセンターに戻る</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

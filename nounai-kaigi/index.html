@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3771782298256692" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>脳内会議議事録メーカー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <main class="stage">
+    <header class="hero">
+      <h1 class="brand">脳内会議議事録メーカー</h1>
+      <p class="tagline">迷いごとを、5人格の討論で決着させる。</p>
+    </header>
+
+    <section class="intake" id="intake" aria-label="議題入力">
+      <label class="field" for="topicInput">
+        <span class="field-label">議題</span>
+        <input
+          type="text"
+          id="topicInput"
+          maxlength="40"
+          placeholder="例：夜中にラーメンを食べるか"
+          autocomplete="off"
+          inputmode="text"
+        >
+      </label>
+      <button type="button" class="start-btn" id="startBtn">会議を開始する</button>
+      <p class="intake-hint" id="intakeHint" aria-live="polite"></p>
+    </section>
+
+    <section class="gauges" id="gauges" hidden aria-label="賛否ゲージ">
+      <div class="gauge">
+        <div class="gauge-meta">
+          <span class="gauge-label for">賛成</span>
+          <span class="gauge-val" id="forVal">0</span>
+        </div>
+        <div class="gauge-track" aria-hidden="true">
+          <div class="gauge-fill for" id="forBar"></div>
+        </div>
+      </div>
+      <div class="gauge">
+        <div class="gauge-meta">
+          <span class="gauge-label against">反対</span>
+          <span class="gauge-val" id="againstVal">0</span>
+        </div>
+        <div class="gauge-track" aria-hidden="true">
+          <div class="gauge-fill against" id="againstBar"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="meeting" id="meeting" hidden aria-label="脳内会議">
+      <div class="meeting-head">
+        <p class="meeting-topic" id="meetingTopic"></p>
+        <p class="meeting-status" id="meetingStatus">開会中…</p>
+      </div>
+      <div class="chat" id="chat" role="log" aria-live="polite" aria-relevant="additions"></div>
+    </section>
+
+    <section class="verdict" id="verdict" hidden aria-label="採決結果">
+      <p class="verdict-eyebrow">採決結果</p>
+      <p class="verdict-stamp" id="verdictStamp"></p>
+      <p class="verdict-comment" id="verdictComment"></p>
+      <div class="verdict-actions">
+        <button type="button" class="dl-btn" id="dlBtn">脳内閣議決定書をダウンロード</button>
+        <button type="button" class="again-btn" id="againBtn">別の議題で開く</button>
+      </div>
+      <canvas id="decreeCanvas" width="1080" height="1350" hidden aria-hidden="true"></canvas>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a href="../">← ごましおアプリセンターに戻る</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
